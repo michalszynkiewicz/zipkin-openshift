@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Route
+metadata:
+  name: zipkin
+  namespace: bjug
+spec:
+  port:
+    targetPort: 9411-tcp
+  to:
+    kind: Service
+    name: zipkin-openshift
+    weight: 100
+  wildcardPolicy: None
+status:
+  ingress:
+    - conditions:
+      routerName: router
